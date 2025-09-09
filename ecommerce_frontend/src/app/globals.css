@@ -1,0 +1,106 @@
+@import "tailwindcss";
+
+/* Pastel Theme Variables */
+:root {
+  --color-primary: #FFD1DC;   /* Pink pastel */
+  --color-secondary: #B0E0E6; /* Powder blue */
+  --color-accent: #FFFACD;    /* Lemon chiffon */
+  --color-ink: #222222;       /* Neutral ink */
+  --color-bg: #ffffff;        /* Background */
+  --color-soft: #f9fafb;      /* Soft section background */
+}
+
+/* Base Resets */
+* { box-sizing: border-box; padding: 0; margin: 0; }
+html, body { max-width: 100vw; overflow-x: hidden; background: var(--color-bg); color: var(--color-ink); }
+body { font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji"; }
+
+/* Utilities */
+.container-px { padding-left: clamp(1rem, 3vw, 2rem); padding-right: clamp(1rem, 3vw, 2rem); }
+.max-w-wrap { max-width: 1200px; margin-inline: auto; }
+.round-soft { border-radius: 16px; }
+.shadow-soft { box-shadow: 0 4px 24px rgba(0,0,0,0.08); }
+.pastel-border { border: 1px solid rgba(0,0,0,0.06); }
+
+.btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  gap: .5rem; padding: .75rem 1rem; border-radius: 9999px; font-weight: 500;
+  transition: all .2s ease; text-decoration: none;
+}
+.btn-primary { background: var(--color-primary); color: #522232; }
+.btn-primary:hover { filter: brightness(0.96); transform: translateY(-1px); }
+.btn-secondary { background: var(--color-secondary); color: #0e3a4a; }
+.btn-secondary:hover { filter: brightness(0.96); transform: translateY(-1px); }
+.btn-accent { background: var(--color-accent); color: #5a4f1e; }
+.btn-accent:hover { filter: brightness(0.97); transform: translateY(-1px); }
+.btn-ghost { background: #fff; color: #222; border: 1px solid rgba(0,0,0,0.08); }
+.btn-ghost:hover { background: #fafafa; }
+
+.pill { padding: .375rem .75rem; border-radius: 9999px; border: 1px solid rgba(0,0,0,.08); background: #fff; }
+.pill-active { background: var(--color-secondary); color: #0e3a4a; border-color: transparent; }
+
+.badge {
+  display: inline-flex; align-items: center; gap: .375rem;
+  padding: .25rem .625rem; font-size: .75rem; border-radius: 9999px;
+  background: var(--color-accent); color: #5a4f1e;
+}
+
+.header-blur {
+  backdrop-filter: saturate(180%) blur(12px);
+  background: color-mix(in srgb, var(--color-accent) 14%, white);
+  border-bottom: 1px solid rgba(0,0,0,0.06);
+}
+
+.hero {
+  background: linear-gradient(180deg, color-mix(in srgb, var(--color-primary) 18%, white) 0%, white 100%);
+}
+
+.card {
+  background: #fff;
+  border: 1px solid rgba(0,0,0,0.06);
+  border-radius: 16px;
+  box-shadow: 0 6px 24px rgba(0,0,0,0.06);
+}
+
+.grid-products {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  gap: 1rem;
+}
+@media (min-width: 768px) { .grid-products { gap: 1.25rem; } }
+@media (min-width: 1024px) { .grid-products { gap: 1.5rem; } }
+
+.product-card {
+  display: flex; flex-direction: column; gap: .5rem;
+  background: #fff; border-radius: 14px; border: 1px solid rgba(0,0,0,.06);
+  overflow: hidden; transition: transform .2s ease, box-shadow .2s ease;
+}
+.product-card:hover { transform: translateY(-2px); box-shadow: 0 10px 30px rgba(0,0,0,.08); }
+.product-image-wrap { position: relative; aspect-ratio: 4/5; background: var(--color-soft); }
+.product-info { padding: .75rem .875rem 1rem; }
+.price { font-weight: 600; }
+
+.sidebar {
+  position: sticky; top: 88px;
+  background: #fff; border: 1px solid rgba(0,0,0,.06);
+  border-radius: 14px; padding: 1rem;
+}
+
+.modal-backdrop {
+  position: fixed; inset: 0; background: rgba(0,0,0,.28); display: grid; place-items: center; z-index: 50;
+}
+.modal-sheet {
+  width: min(920px, 92vw); background: #fff; border-radius: 16px; padding: 1rem;
+  box-shadow: 0 20px 60px rgba(0,0,0,.22);
+}
+
+/* Image helpers */
+.img-cover { width: 100%; height: 100%; object-fit: cover; }
+
+/* Footer */
+.footer {
+  border-top: 1px solid rgba(0,0,0,.08);
+  background: linear-gradient(180deg, white 0%, color-mix(in srgb, var(--color-secondary) 10%, white) 100%);
+  color: #334155;
+  padding: 2rem 0;
+}
