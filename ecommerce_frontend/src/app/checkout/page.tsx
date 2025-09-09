@@ -20,7 +20,7 @@ export default function CheckoutPage() {
       </nav>
 
       <section className="grid grid-cols-1 lg:grid-cols-12 gap-6">
-        <div className="lg:col-span-7 card p-4 md:p-6">
+        <div className="lg:col-span-7 card p-4 md:p-6 hover-elevate">
           <h1 className="text-2xl font-semibold mb-4">Checkout</h1>
 
           <form
@@ -78,17 +78,17 @@ export default function CheckoutPage() {
             </div>
 
             <div className="md:col-span-2 flex items-center justify-end gap-2">
-              <Link className="btn btn-ghost" href="/">
+              <Link className="btn btn-ghost hover-elevate focus-ring" href="/">
                 Cancel
               </Link>
-              <button className="btn btn-primary" type="submit">
+              <button className="btn btn-primary hover-elevate focus-ring" type="submit">
                 Place Order
               </button>
             </div>
           </form>
         </div>
 
-        <aside className="lg:col-span-5 card p-4 md:p-6">
+        <aside className="lg:col-span-5 card p-4 md:p-6 hover-elevate">
           <h2 className="text-lg font-semibold mb-3">Order Summary</h2>
           <div className="flex items-center gap-3 mb-4">
             <div className="w-16 h-16 rounded-md overflow-hidden bg-[var(--color-soft)]">

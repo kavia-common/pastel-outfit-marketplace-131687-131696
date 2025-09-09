@@ -52,7 +52,7 @@ export default function ClientProductDetail({ id }: { id: string }) {
 
       <section className="grid grid-cols-1 lg:grid-cols-12 gap-6">
         {/* Gallery */}
-        <div className="lg:col-span-7 card p-2 md:p-4">
+        <div className="lg:col-span-7 card p-2 md:p-4 clickable hover-elevate">
           <div className="round-soft overflow-hidden">
             <div className="product-image-wrap">
               {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -69,7 +69,7 @@ export default function ClientProductDetail({ id }: { id: string }) {
               <button
                 key={i}
                 onClick={() => setActiveIndex(i)}
-                className={`overflow-hidden rounded-md border ${
+                className={`overflow-hidden rounded-md border clickable hover-elevate focus-ring ${
                   i === activeIndex
                     ? "border-[var(--color-secondary)]"
                     : "border-slate-200"
@@ -84,7 +84,7 @@ export default function ClientProductDetail({ id }: { id: string }) {
         </div>
 
         {/* Info */}
-        <div className="lg:col-span-5 card p-4 md:p-6">
+        <div className="lg:col-span-5 card p-4 md:p-6 hover-elevate">
           <div className="flex items-center gap-2 mb-3">
             <span className="badge">In stock</span>
             <span className="pill">Color: {product.color}</span>
@@ -119,11 +119,11 @@ export default function ClientProductDetail({ id }: { id: string }) {
               <p className="text-2xl font-semibold">${product.price}</p>
             </div>
             <div className="flex items-center gap-2">
-              <button className="btn btn-ghost" onClick={() => router.back()}>
+              <button className="btn btn-ghost hover-elevate focus-ring" onClick={() => router.back()}>
                 Back
               </button>
               <button
-                className="btn btn-primary"
+                className="btn btn-primary hover-elevate focus-ring"
                 onClick={addToCart}
                 disabled={!selectedSize}
                 aria-disabled={!selectedSize}
@@ -154,7 +154,7 @@ export default function ClientProductDetail({ id }: { id: string }) {
           <div className="modal-sheet" onClick={(e) => e.stopPropagation()}>
             <div className="flex items-center justify-between mb-3">
               <h2 className="text-xl font-semibold">Your Cart</h2>
-              <button className="btn btn-ghost" onClick={() => setShowCart(false)}>
+              <button className="btn btn-ghost hover-elevate focus-ring" onClick={() => setShowCart(false)}>
                 Close
               </button>
             </div>
@@ -179,7 +179,7 @@ export default function ClientProductDetail({ id }: { id: string }) {
                 <span className="font-semibold">${product.price}</span>
               </p>
               <div className="flex gap-2">
-                <Link className="btn btn-secondary" href="/checkout">
+                <Link className="btn btn-secondary hover-elevate focus-ring" href="/checkout">
                   Go to Checkout
                 </Link>
               </div>

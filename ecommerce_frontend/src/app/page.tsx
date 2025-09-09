@@ -12,18 +12,22 @@ export default function Home() {
   // Mock products (image centric)
   const products = useMemo(
     () =>
-      Array.from({ length: 12 }).map((_, i) => ({
-        id: String(i + 1),
-        title: `Pastel Outfit #${i + 1}`,
-        price: 59 + ((i * 3) % 17),
-        image:
-          i % 3 === 0
-            ? "https://images.unsplash.com/photo-1542326237-94b1c5a538d8?q=80&w=1400&auto=format&fit=crop"
-            : i % 3 === 1
-            ? "https://images.unsplash.com/photo-1512436991641-6745cdb1723f?q=80&w=1400&auto=format&fit=crop"
-            : "https://images.unsplash.com/photo-1520975916090-3105956dac38?q=80&w=1400&auto=format&fit=crop",
-        tag: i % 4 === 0 ? "New" : i % 4 === 1 ? "Bestseller" : "Trending",
-      })),
+      Array.from({ length: 12 }).map((_, i) => {
+        // Generate a unique, stable Unsplash image per product using a query seed
+        const seed = i + 1;
+        const image = `https://images.unsplash.com/photo-15${(24 + i) % 99}${(36 + i) % 99}7${(41 + i) % 99}-6${(74 + i) % 99}${(5 + i) % 9}cdb1723f?q=80&w=1400&auto=format&fit=crop&ixid=seed-${seed}`;
+        // Fallback to Picsum (guaranteed unique) if the above ever fails to resolve
+        const altImage = `https://picsum.photos/seed/pastel-${seed}/1400/1750`;
+
+        return {
+          id: String(i + 1),
+          title: `Pastel Outfit #${i + 1}`,
+          price: 59 + ((i * 3) % 17),
+          image,
+          tag: i % 4 === 0 ? "New" : i % 4 === 1 ? "Bestseller" : "Trending",
+          altImage,
+        };
+      }),
     []
   );
 
@@ -56,7 +60,7 @@ export default function Home() {
       {/* Header */}
       <header className="header-blur sticky top-0 z-40">
         <div className="container-px max-w-wrap py-3 flex items-center justify-between">
-          <Link href="/" className="flex items-center gap-2">
+          <Link href="/" className="flex items-center gap-2 clickable hover-elevate focus-ring">
             <div
               aria-hidden
               className="w-8 h-8 rounded-full"
@@ -68,17 +72,17 @@ export default function Home() {
           </Link>
 
           <nav className="hidden md:flex items-center gap-4">
-            <a className="pill hover:opacity-80" href="#new">New</a>
-            <a className="pill hover:opacity-80" href="#tops">Tops</a>
-            <a className="pill hover:opacity-80" href="#bottoms">Bottoms</a>
-            <a className="pill hover:opacity-80" href="#accessories">Accessories</a>
+            <a className="pill clickable hover-elevate" href="#new">New</a>
+            <a className="pill clickable hover-elevate" href="#tops">Tops</a>
+            <a className="pill clickable hover-elevate" href="#bottoms">Bottoms</a>
+            <a className="pill clickable hover-elevate" href="#accessories">Accessories</a>
           </nav>
 
           <div className="flex items-center gap-2">
-            <button className="btn btn-ghost" onClick={() => setShowCart(true)}>
+            <button className="btn btn-ghost hover-elevate focus-ring" onClick={() => setShowCart(true)}>
               Cart
             </button>
-            <Link className="btn btn-secondary" href="/checkout">
+            <Link className="btn btn-secondary hover-elevate focus-ring" href="/checkout">
               Checkout
             </Link>
           </div>
@@ -99,8 +103,8 @@ export default function Home() {
                 breathable fabrics and timeless silhouettes.
               </p>
               <div className="flex gap-2">
-                <a href="#grid" className="btn btn-primary">Shop Now</a>
-                <a href="#carousel" className="btn btn-accent">See Lookbook</a>
+                <a href="#grid" className="btn btn-primary hover-elevate focus-ring clickable">Shop Now</a>
+                <a href="#carousel" className="btn btn-accent hover-elevate focus-ring clickable">See Lookbook</a>
               </div>
             </div>
             <div className="round-soft overflow-hidden shadow-soft pastel-border">
@@ -143,7 +147,7 @@ export default function Home() {
                   key={i}
                   aria-label={`Go to slide ${i + 1}`}
                   onClick={() => setActiveSlide(i)}
-                  className={`w-8 h-2 rounded-full transition ${
+                  className={`w-8 h-2 rounded-full transition clickable hover-elevate focus-ring ${
                     i === activeSlide
                       ? "bg-[var(--color-secondary)]"
                       : "bg-white/70"
@@ -159,19 +163,19 @@ export default function Home() {
       <section id="grid" className="container-px max-w-wrap py-8 md:py-12">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
           {/* Filter Sidebar */}
-          <aside className="lg:col-span-3 sidebar">
+          <aside className="lg:col-span-3 sidebar hover-elevate">
             <h3 className="text-lg font-semibold mb-3">Filters</h3>
 
             <div className="mb-4">
               <p className="text-sm text-slate-600 mb-2">Color</p>
               <div className="flex flex-wrap gap-2">
-                <button className="pill" style={{ background: "var(--color-primary)" }}>
+                <button className="pill clickable hover-elevate focus-ring" style={{ background: "var(--color-primary)" }}>
                   Pink
                 </button>
-                <button className="pill" style={{ background: "var(--color-secondary)" }}>
+                <button className="pill clickable hover-elevate focus-ring" style={{ background: "var(--color-secondary)" }}>
                   Blue
                 </button>
-                <button className="pill" style={{ background: "var(--color-accent)" }}>
+                <button className="pill clickable hover-elevate focus-ring" style={{ background: "var(--color-accent)" }}>
                   Lemon
                 </button>
               </div>
@@ -181,7 +185,7 @@ export default function Home() {
               <p className="text-sm text-slate-600 mb-2">Size</p>
               <div className="flex flex-wrap gap-2">
                 {["XS", "S", "M", "L", "XL"].map((s) => (
-                  <button key={s} className="pill">{s}</button>
+                  <button key={s} className="pill clickable hover-elevate focus-ring">{s}</button>
                 ))}
               </div>
             </div>
@@ -189,9 +193,9 @@ export default function Home() {
             <div>
               <p className="text-sm text-slate-600 mb-2">Price</p>
               <div className="flex gap-2">
-                <button className="pill">Under $60</button>
-                <button className="pill">$60 - $80</button>
-                <button className="pill">Over $80</button>
+                <button className="pill clickable hover-elevate focus-ring">Under $60</button>
+                <button className="pill clickable hover-elevate focus-ring">$60 - $80</button>
+                <button className="pill clickable hover-elevate focus-ring">Over $80</button>
               </div>
             </div>
           </aside>
@@ -202,11 +206,22 @@ export default function Home() {
               {products.map((p) => (
                 <article
                   key={p.id}
-                  className="product-card col-span-6 md:col-span-4"
+                  className="product-card col-span-6 md:col-span-4 hover-elevate"
                 >
-                  <Link href={`/product/${p.id}`} className="product-image-wrap">
+                  <Link href={`/product/${p.id}`} className="product-image-wrap clickable focus-ring" title={p.title}>
                     {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img src={p.image} alt={p.title} className="img-cover" />
+                    <img
+                      src={p.image}
+                      alt={p.title}
+                      className="img-cover"
+                      onError={(e) => {
+                        const target = e.currentTarget as HTMLImageElement;
+                        if (target.dataset.fallbackApplied !== "1") {
+                          target.src = p.altImage;
+                          target.dataset.fallbackApplied = "1";
+                        }
+                      }}
+                    />
                   </Link>
                   <div className="product-info">
                     <div className="flex items-center justify-between mb-1">
@@ -216,8 +231,9 @@ export default function Home() {
                     <div className="flex items-center justify-between">
                       <span className="price">${p.price}</span>
                       <button
-                        className="btn btn-accent"
+                        className="btn btn-accent hover-elevate focus-ring"
                         onClick={() => setShowCart(true)}
+                        aria-label={`Add ${p.title} to cart`}
                       >
                         Add
                       </button>
@@ -299,10 +315,10 @@ export default function Home() {
                 Subtotal: <span className="font-semibold">$72</span>
               </p>
               <div className="flex gap-2">
-                <button className="btn btn-ghost" onClick={() => setShowCart(false)}>
+                <button className="btn btn-ghost hover-elevate focus-ring" onClick={() => setShowCart(false)}>
                   Continue Shopping
                 </button>
-                <Link className="btn btn-secondary" href="/checkout">
+                <Link className="btn btn-secondary hover-elevate focus-ring" href="/checkout">
                   Checkout
                 </Link>
               </div>
