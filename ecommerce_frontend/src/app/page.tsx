@@ -17,7 +17,9 @@ export default function Home() {
         <div className="card">Loading products...</div>
       )}
       {isError && (
-        <div className="card text-red-500">Failed to load products. Ensure the backend is running at http://localhost:3001/api</div>
+        <div className="card text-red-500">
+          Failed to load products. Ensure the backend is reachable at https://vscode-internal-14400-beta.beta01.cloud.kavia.ai:3001/api
+        </div>
       )}
 
       <section className="grid gap-4 grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
