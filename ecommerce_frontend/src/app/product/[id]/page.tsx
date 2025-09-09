@@ -1,4 +1,7 @@
 import ClientProductDetail from "./ClientPage";
+// Import the generated PageProps type from Next.js build types to satisfy TS expectation
+// eslint-disable-next-line @typescript-eslint/consistent-type-imports
+import type { PageProps } from "../../../../.next/types/app/product/[id]/page";
 
 /**
  * PUBLIC_INTERFACE
@@ -14,12 +17,11 @@ export async function generateStaticParams() {
  * ProductDetailPage is a server component wrapper that passes the dynamic param to
  * the client component. This allows using generateStaticParams while keeping
  * interactive UI in a client component.
+ *
+ * Note: We import the generated PageProps type so that the exported signature matches
+ * the Next.js type expectations enforced during build-type checking.
  */
-type PageProps = {
-  params: Promise<{ id: string }>;
-};
-
-export default async function ProductDetailPage({ params }: PageProps) {
-  const { id } = await params;
+export default function ProductDetailPage({ params }: PageProps) {
+  const { id } = (params as unknown as { id: string });
   return <ClientProductDetail id={id} />;
 }
