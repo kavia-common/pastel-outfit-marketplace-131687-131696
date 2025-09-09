@@ -76,7 +76,36 @@ body { font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto,
   overflow: hidden; transition: transform .2s ease, box-shadow .2s ease;
 }
 .product-card:hover { transform: translateY(-2px); box-shadow: 0 10px 30px rgba(0,0,0,.08); }
-.product-image-wrap { position: relative; aspect-ratio: 4/5; background: var(--color-soft); }
+.product-image-wrap {
+  position: relative;
+  aspect-ratio: 4/5;
+  background: var(--color-soft);
+  border-radius: 14px;
+  overflow: hidden;
+  border: 1px solid rgba(0,0,0,.05);
+  box-shadow: 0 6px 18px rgba(0,0,0,.06);
+  transform: translateZ(0); /* create stacking context for smoother transforms */
+}
+.product-image-wrap::after {
+  /* subtle inner vignette for visual depth on pastel theme */
+  content: "";
+  position: absolute; inset: 0;
+  background: radial-gradient(120% 100% at 50% 10%, rgba(255,255,255,0) 40%, rgba(0,0,0,0.06) 100%);
+  pointer-events: none;
+  opacity: .4;
+}
+.product-image-wrap .img-cover {
+  transition: transform .35s ease, filter .35s ease;
+  will-change: transform;
+}
+.product-image-wrap:hover .img-cover {
+  transform: scale(1.04);
+  filter: saturate(1.03);
+}
+.product-image-wrap:hover {
+  box-shadow: 0 10px 28px rgba(0,0,0,.10);
+  border-color: color-mix(in srgb, var(--color-secondary) 20%, rgba(0,0,0,.05));
+}
 .product-info { padding: .75rem .875rem 1rem; }
 .price { font-weight: 600; }
 

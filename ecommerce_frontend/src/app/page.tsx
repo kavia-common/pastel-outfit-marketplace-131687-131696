@@ -110,6 +110,8 @@ export default function Home() {
                   className="img-cover"
                   src="https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=1600&auto=format&fit=crop"
                   alt="Pastel outfits hero"
+                  loading="eager"
+                  decoding="async"
                 />
               </div>
             </div>
@@ -127,6 +129,8 @@ export default function Home() {
                 src={slides[activeSlide].image}
                 alt={slides[activeSlide].headline}
                 className="img-cover"
+                loading="lazy"
+                decoding="async"
               />
             </div>
             <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent" />
@@ -206,7 +210,13 @@ export default function Home() {
                 >
                   <Link href={`/product/${p.id}`} className="product-image-wrap">
                     {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img src={p.image} alt={p.title} className="img-cover" />
+                    <img
+                      src={p.image}
+                      alt={p.title}
+                      className="img-cover"
+                      loading="lazy"
+                      decoding="async"
+                    />
                   </Link>
                   <div className="product-info">
                     <div className="flex items-center justify-between mb-1">
@@ -283,6 +293,8 @@ export default function Home() {
                   src="https://images.unsplash.com/photo-1512436991641-6745cdb1723f?q=80&w=600&auto=format&fit=crop"
                   alt=""
                   className="img-cover"
+                  loading="lazy"
+                  decoding="async"
                 />
               </div>
               <div className="col-span-6">

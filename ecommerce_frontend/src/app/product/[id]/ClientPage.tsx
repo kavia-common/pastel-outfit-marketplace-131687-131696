@@ -60,6 +60,8 @@ export default function ClientProductDetail({ id }: { id: string }) {
                 src={product.images[activeIndex]}
                 alt={product.title}
                 className="img-cover"
+                loading="eager"
+                decoding="async"
               />
             </div>
           </div>
@@ -77,7 +79,7 @@ export default function ClientProductDetail({ id }: { id: string }) {
                 aria-label={`Show image ${i + 1}`}
               >
                 {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src={src} alt="" className="img-cover" />
+                <img src={src} alt="" className="img-cover" loading="lazy" decoding="async" />
               </button>
             ))}
           </div>
@@ -162,7 +164,7 @@ export default function ClientProductDetail({ id }: { id: string }) {
             <div className="grid grid-cols-12 gap-3 items-center mb-4">
               <div className="col-span-3 rounded-md overflow-hidden bg-[var(--color-soft)] aspect-square">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src={product.images[0]} alt="" className="img-cover" />
+                <img src={product.images[0]} alt="" className="img-cover" loading="lazy" decoding="async" />
               </div>
               <div className="col-span-6">
                 <p className="font-medium">{product.title}</p>
