@@ -103,9 +103,8 @@ export default function ClientProductDetail({ id }: { id: string }) {
                 <button
                   key={s}
                   onClick={() => setSelectedSize(s)}
-                  className={`pill ${
-                    selectedSize === s ? "pill-active" : ""
-                  }`}
+                  className={`pill ${selectedSize === s ? "pill-active" : ""}`}
+                  aria-pressed={selectedSize === s}
                 >
                   {s}
                 </button>
@@ -119,7 +118,7 @@ export default function ClientProductDetail({ id }: { id: string }) {
               <p className="text-2xl font-semibold">${product.price}</p>
             </div>
             <div className="flex items-center gap-2">
-              <button className="btn btn-ghost" onClick={() => router.back()}>
+              <button className="btn btn-ghost" onClick={() => router.back()} aria-label="Go back">
                 Back
               </button>
               <button
@@ -127,6 +126,7 @@ export default function ClientProductDetail({ id }: { id: string }) {
                 onClick={addToCart}
                 disabled={!selectedSize}
                 aria-disabled={!selectedSize}
+                aria-label="Add to cart"
               >
                 Add to cart
               </button>

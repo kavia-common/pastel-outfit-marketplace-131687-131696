@@ -13,7 +13,7 @@ export default function NotFound() {
           <p className="text-slate-600">
             The page you’re looking for doesn’t exist or was moved.
           </p>
-          <Link href="/" className="btn btn-secondary">
+          <Link href="/" className="btn btn-secondary" aria-label="Back to home">
             Back to Home
           </Link>
         </div>

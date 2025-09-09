@@ -53,38 +53,6 @@ export default function Home() {
 
   return (
     <main>
-      {/* Header */}
-      <header className="header-blur sticky top-0 z-40">
-        <div className="container-px max-w-wrap py-3 flex items-center justify-between">
-          <Link href="/" className="flex items-center gap-2">
-            <div
-              aria-hidden
-              className="w-8 h-8 rounded-full"
-              style={{ background: "var(--color-primary)" }}
-            />
-            <span className="font-semibold tracking-tight">
-              Pastel Market
-            </span>
-          </Link>
-
-          <nav className="hidden md:flex items-center gap-4">
-            <a className="pill hover:opacity-80" href="#new">New</a>
-            <a className="pill hover:opacity-80" href="#tops">Tops</a>
-            <a className="pill hover:opacity-80" href="#bottoms">Bottoms</a>
-            <a className="pill hover:opacity-80" href="#accessories">Accessories</a>
-          </nav>
-
-          <div className="flex items-center gap-2">
-            <button className="btn btn-ghost" onClick={() => setShowCart(true)}>
-              Cart
-            </button>
-            <Link className="btn btn-secondary" href="/checkout">
-              Checkout
-            </Link>
-          </div>
-        </div>
-      </header>
-
       {/* Hero */}
       <section className="hero">
         <div className="container-px max-w-wrap py-10 md:py-16">
@@ -99,8 +67,8 @@ export default function Home() {
                 breathable fabrics and timeless silhouettes.
               </p>
               <div className="flex gap-2">
-                <a href="#grid" className="btn btn-primary">Shop Now</a>
-                <a href="#carousel" className="btn btn-accent">See Lookbook</a>
+                <a href="#grid" className="btn btn-primary" aria-label="Shop products in the grid">Shop Now</a>
+                <a href="#carousel" className="btn btn-accent" aria-label="View lookbook carousel">See Lookbook</a>
               </div>
             </div>
             <div className="round-soft overflow-hidden shadow-soft pastel-border">
@@ -165,13 +133,13 @@ export default function Home() {
             <div className="mb-4">
               <p className="text-sm text-slate-600 mb-2">Color</p>
               <div className="flex flex-wrap gap-2">
-                <button className="pill" style={{ background: "var(--color-primary)" }}>
+                <button className="pill" aria-pressed="false" style={{ background: "var(--color-primary)" }}>
                   Pink
                 </button>
-                <button className="pill" style={{ background: "var(--color-secondary)" }}>
+                <button className="pill" aria-pressed="false" style={{ background: "var(--color-secondary)" }}>
                   Blue
                 </button>
-                <button className="pill" style={{ background: "var(--color-accent)" }}>
+                <button className="pill" aria-pressed="false" style={{ background: "var(--color-accent)" }}>
                   Lemon
                 </button>
               </div>
@@ -181,7 +149,7 @@ export default function Home() {
               <p className="text-sm text-slate-600 mb-2">Size</p>
               <div className="flex flex-wrap gap-2">
                 {["XS", "S", "M", "L", "XL"].map((s) => (
-                  <button key={s} className="pill">{s}</button>
+                  <button key={s} className="pill" aria-pressed="false">{s}</button>
                 ))}
               </div>
             </div>
@@ -189,9 +157,9 @@ export default function Home() {
             <div>
               <p className="text-sm text-slate-600 mb-2">Price</p>
               <div className="flex gap-2">
-                <button className="pill">Under $60</button>
-                <button className="pill">$60 - $80</button>
-                <button className="pill">Over $80</button>
+                <button className="pill" aria-pressed="false">Under $60</button>
+                <button className="pill" aria-pressed="false">$60 - $80</button>
+                <button className="pill" aria-pressed="false">Over $80</button>
               </div>
             </div>
           </aside>
@@ -204,7 +172,7 @@ export default function Home() {
                   key={p.id}
                   className="product-card col-span-6 md:col-span-4"
                 >
-                  <Link href={`/product/${p.id}`} className="product-image-wrap">
+                  <Link href={`/product/${p.id}`} className="product-image-wrap" aria-label={`View ${p.title}`}>
                     {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img src={p.image} alt={p.title} className="img-cover" />
                   </Link>
@@ -218,6 +186,7 @@ export default function Home() {
                       <button
                         className="btn btn-accent"
                         onClick={() => setShowCart(true)}
+                        aria-label={`Add ${p.title} to cart`}
                       >
                         Add
                       </button>
@@ -229,36 +198,6 @@ export default function Home() {
           </div>
         </div>
       </section>
-
-      {/* Footer */}
-      <footer className="footer">
-        <div className="container-px max-w-wrap">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div>
-              <p className="font-semibold mb-2">Pastel Market</p>
-              <p className="text-sm text-slate-600">
-                Minimal, image-first fashion in soothing tones.
-              </p>
-            </div>
-            <div>
-              <p className="font-semibold mb-2">Help</p>
-              <ul className="space-y-1 text-sm text-slate-600">
-                <li><a className="hover:underline" href="#">Shipping</a></li>
-                <li><a className="hover:underline" href="#">Returns</a></li>
-                <li><a className="hover:underline" href="#">FAQ</a></li>
-              </ul>
-            </div>
-            <div>
-              <p className="font-semibold mb-2">Follow</p>
-              <ul className="space-y-1 text-sm text-slate-600">
-                <li><a className="hover:underline" href="#">Instagram</a></li>
-                <li><a className="hover:underline" href="#">Pinterest</a></li>
-                <li><a className="hover:underline" href="#">TikTok</a></li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </footer>
 
       {/* Cart Modal */}
       {showCart && (

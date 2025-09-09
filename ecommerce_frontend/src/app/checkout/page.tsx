@@ -32,8 +32,9 @@ export default function CheckoutPage() {
             }}
           >
             <div className="md:col-span-2">
-              <label className="block text-sm mb-1">Email</label>
+              <label className="block text-sm mb-1" htmlFor="email">Email</label>
               <input
+                id="email"
                 className="w-full rounded-md border px-3 py-2"
                 type="email"
                 placeholder="you@example.com"
@@ -42,46 +43,46 @@ export default function CheckoutPage() {
             </div>
 
             <div>
-              <label className="block text-sm mb-1">First Name</label>
-              <input className="w-full rounded-md border px-3 py-2" required />
+              <label className="block text-sm mb-1" htmlFor="first">First Name</label>
+              <input id="first" className="w-full rounded-md border px-3 py-2" required />
             </div>
             <div>
-              <label className="block text-sm mb-1">Last Name</label>
-              <input className="w-full rounded-md border px-3 py-2" required />
+              <label className="block text-sm mb-1" htmlFor="last">Last Name</label>
+              <input id="last" className="w-full rounded-md border px-3 py-2" required />
             </div>
 
             <div className="md:col-span-2">
-              <label className="block text-sm mb-1">Address</label>
-              <input className="w-full rounded-md border px-3 py-2" required />
+              <label className="block text-sm mb-1" htmlFor="address">Address</label>
+              <input id="address" className="w-full rounded-md border px-3 py-2" required />
             </div>
 
             <div>
-              <label className="block text-sm mb-1">City</label>
-              <input className="w-full rounded-md border px-3 py-2" required />
+              <label className="block text-sm mb-1" htmlFor="city">City</label>
+              <input id="city" className="w-full rounded-md border px-3 py-2" required />
             </div>
             <div>
-              <label className="block text-sm mb-1">Postal Code</label>
-              <input className="w-full rounded-md border px-3 py-2" required />
+              <label className="block text-sm mb-1" htmlFor="postal">Postal Code</label>
+              <input id="postal" className="w-full rounded-md border px-3 py-2" required />
             </div>
 
             <div className="md:col-span-2">
-              <label className="block text-sm mb-1">Card Number</label>
-              <input className="w-full rounded-md border px-3 py-2" required />
+              <label className="block text-sm mb-1" htmlFor="card">Card Number</label>
+              <input id="card" className="w-full rounded-md border px-3 py-2" required />
             </div>
             <div>
-              <label className="block text-sm mb-1">Expiry</label>
-              <input className="w-full rounded-md border px-3 py-2" required />
+              <label className="block text-sm mb-1" htmlFor="exp">Expiry</label>
+              <input id="exp" className="w-full rounded-md border px-3 py-2" required />
             </div>
             <div>
-              <label className="block text-sm mb-1">CVC</label>
-              <input className="w-full rounded-md border px-3 py-2" required />
+              <label className="block text-sm mb-1" htmlFor="cvc">CVC</label>
+              <input id="cvc" className="w-full rounded-md border px-3 py-2" required />
             </div>
 
             <div className="md:col-span-2 flex items-center justify-end gap-2">
-              <Link className="btn btn-ghost" href="/">
+              <Link className="btn btn-ghost" href="/" aria-label="Cancel and go home">
                 Cancel
               </Link>
-              <button className="btn btn-primary" type="submit">
+              <button className="btn btn-primary" type="submit" aria-label="Place order">
                 Place Order
               </button>
             </div>
