@@ -1,26 +1,41 @@
 @import "tailwindcss";
 
+/* Pastel theme variables */
 :root {
-  --color-primary: #000000;
-  --color-secondary: #FFFFFF;
-  --color-accent: #3B82F6;
-  --color-background: #FFFFFF;
+  --pastel-primary: #FFD1DC; /* pink */
+  --pastel-secondary: #B0E0E6; /* powder blue */
+  --pastel-accent: #FFFACD; /* lemon chiffon */
+  --ink: #2A2A2A;
+  --bg: #FAFAFB;
 }
 
-* {
-  box-sizing: border-box;
-  padding: 0;
-  margin: 0;
-}
+* { box-sizing: border-box; padding: 0; margin: 0; }
 
-html,
-body {
+html, body {
   max-width: 100vw;
   overflow-x: hidden;
-  background-color: var(--color-background);
-  color: var(--color-primary);
+  background-color: var(--bg);
+  color: var(--ink);
 }
 
 body {
-  font-family: system-ui, -apple-system, sans-serif;
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji";
+}
+
+/* Utility */
+.card {
+  @apply rounded-2xl border border-pink-100 bg-white shadow-sm;
+}
+
+.app-container {
+  @apply mx-auto max-w-7xl px-4 sm:px-6 lg:px-8;
+}
+
+/* Buttons base overrides for better focus state */
+button, a {
+  outline: none;
+}
+button:focus-visible, a:focus-visible {
+  box-shadow: 0 0 0 3px rgba(255, 209, 220, 0.8);
+  border-radius: 6px;
 }
