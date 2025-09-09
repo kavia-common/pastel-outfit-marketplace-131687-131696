@@ -3,6 +3,8 @@
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useMemo, useState } from "react";
+import ProductImage from "@/app/components/ProductImage";
+import { DEFAULT_PRODUCT_IMAGES } from "@/app/constants/images";
 
 /**
  * PUBLIC_INTERFACE
@@ -21,12 +23,7 @@ export default function ClientProductDetail({ id }: { id: string }) {
       description:
         "Elevate your look with soft tones and comfy textures. Perfect for brunch, strolls, and spring days.",
       price: 69 + (idx % 9),
-      images: [
-        `https://images.unsplash.com/photo-1512436991641-6745cdb1723f?q=80&w=1400&auto=format&fit=crop`,
-        `https://images.unsplash.com/photo-1542326237-94b1c5a538d8?q=80&w=1400&auto=format&fit=crop`,
-        `https://images.unsplash.com/photo-1520975916090-3105956dac38?q=80&w=1400&auto=format&fit=crop`,
-        `https://images.unsplash.com/photo-1509631179647-0177331693ae?q=80&w=1400&auto=format&fit=crop`,
-      ],
+      images: DEFAULT_PRODUCT_IMAGES,
       color: "Blush Pink",
       sizeOptions: ["XS", "S", "M", "L", "XL"],
     };
@@ -54,14 +51,11 @@ export default function ClientProductDetail({ id }: { id: string }) {
         {/* Gallery */}
         <div className="lg:col-span-7 card p-2 md:p-4">
           <div className="round-soft overflow-hidden">
-            <div className="product-image-wrap">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
+            <div className="product-image-wrap h-[400px] md:h-[600px]">
+              <ProductImage
                 src={product.images[activeIndex]}
                 alt={product.title}
                 className="img-cover"
-                loading="eager"
-                decoding="async"
               />
             </div>
           </div>
@@ -75,11 +69,10 @@ export default function ClientProductDetail({ id }: { id: string }) {
                   i === activeIndex
                     ? "border-[var(--color-secondary)]"
                     : "border-slate-200"
-                } aspect-square bg-[var(--color-soft)]`}
+                } aspect-square bg-[var(--color-soft)] relative`}
                 aria-label={`Show image ${i + 1}`}
               >
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src={src} alt="" className="img-cover" loading="lazy" decoding="async" />
+                <ProductImage src={src} alt="" className="img-cover" />
               </button>
             ))}
           </div>
@@ -162,9 +155,12 @@ export default function ClientProductDetail({ id }: { id: string }) {
             </div>
 
             <div className="grid grid-cols-12 gap-3 items-center mb-4">
-              <div className="col-span-3 rounded-md overflow-hidden bg-[var(--color-soft)] aspect-square">
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src={product.images[0]} alt="" className="img-cover" loading="lazy" decoding="async" />
+              <div className="col-span-3 rounded-md overflow-hidden bg-[var(--color-soft)] aspect-square relative">
+                <ProductImage 
+                  src={product.images[0]} 
+                  alt={product.title}
+                  className="img-cover"
+                />
               </div>
               <div className="col-span-6">
                 <p className="font-medium">{product.title}</p>

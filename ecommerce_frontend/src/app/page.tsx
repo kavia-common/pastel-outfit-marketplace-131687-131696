@@ -2,6 +2,8 @@
 
 import Link from "next/link";
 import { useMemo, useState } from "react";
+import ProductImage from "./components/ProductImage";
+import { DEFAULT_PRODUCT_IMAGES } from "./constants/images";
 
 /**
  * PUBLIC_INTERFACE
@@ -16,12 +18,7 @@ export default function Home() {
         id: String(i + 1),
         title: `Pastel Outfit #${i + 1}`,
         price: 59 + ((i * 3) % 17),
-        image:
-          i % 3 === 0
-            ? "https://images.unsplash.com/photo-1542326237-94b1c5a538d8?q=80&w=1400&auto=format&fit=crop"
-            : i % 3 === 1
-            ? "https://images.unsplash.com/photo-1512436991641-6745cdb1723f?q=80&w=1400&auto=format&fit=crop"
-            : "https://images.unsplash.com/photo-1520975916090-3105956dac38?q=80&w=1400&auto=format&fit=crop",
+        image: DEFAULT_PRODUCT_IMAGES[i % DEFAULT_PRODUCT_IMAGES.length],
         tag: i % 4 === 0 ? "New" : i % 4 === 1 ? "Bestseller" : "Trending",
       })),
     []
@@ -105,13 +102,10 @@ export default function Home() {
             </div>
             <div className="round-soft overflow-hidden shadow-soft pastel-border">
               <div className="product-image-wrap">
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
-                  className="img-cover"
+                <ProductImage
                   src="https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=1600&auto=format&fit=crop"
                   alt="Pastel outfits hero"
-                  loading="eager"
-                  decoding="async"
+                  className="img-cover"
                 />
               </div>
             </div>
@@ -124,13 +118,10 @@ export default function Home() {
         <div className="card p-3 md:p-4">
           <div className="relative round-soft overflow-hidden">
             <div className="product-image-wrap">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
+              <ProductImage
                 src={slides[activeSlide].image}
                 alt={slides[activeSlide].headline}
                 className="img-cover"
-                loading="lazy"
-                decoding="async"
               />
             </div>
             <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent" />
@@ -209,13 +200,10 @@ export default function Home() {
                   className="product-card col-span-6 md:col-span-4"
                 >
                   <Link href={`/product/${p.id}`} className="product-image-wrap">
-                    {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img
+                    <ProductImage
                       src={p.image}
                       alt={p.title}
                       className="img-cover"
-                      loading="lazy"
-                      decoding="async"
                     />
                   </Link>
                   <div className="product-info">
@@ -288,13 +276,10 @@ export default function Home() {
             </div>
             <div className="grid grid-cols-12 gap-3 items-center mb-4">
               <div className="col-span-3 rounded-md overflow-hidden bg-[var(--color-soft)] aspect-square">
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
-                  src="https://images.unsplash.com/photo-1512436991641-6745cdb1723f?q=80&w=600&auto=format&fit=crop"
-                  alt=""
+                <ProductImage
+                  src={DEFAULT_PRODUCT_IMAGES[1]}
+                  alt="Cart item"
                   className="img-cover"
-                  loading="lazy"
-                  decoding="async"
                 />
               </div>
               <div className="col-span-6">
