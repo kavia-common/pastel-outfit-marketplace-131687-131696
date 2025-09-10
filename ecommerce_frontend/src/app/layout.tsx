@@ -55,11 +55,14 @@ function Header() {
           <span className="font-semibold tracking-tight">Pastel Market</span>
         </Link>
 
-        <nav className="hidden md:flex items-center gap-4">
+        <nav className="hidden md:flex items-center gap-2">
           <Link className="pill hover:opacity-80" href="/#new">New</Link>
           <Link className="pill hover:opacity-80" href="/#tops">Tops</Link>
           <Link className="pill hover:opacity-80" href="/#bottoms">Bottoms</Link>
           <Link className="pill hover:opacity-80" href="/#accessories">Accessories</Link>
+          <Link className="pill hover:opacity-80" href="/gallery">Gallery</Link>
+          <Link className="pill hover:opacity-80" href="/lookbook">Lookbook</Link>
+          <Link className="pill hover:opacity-80" href="/about">About</Link>
         </nav>
 
         <div className="flex items-center gap-2">

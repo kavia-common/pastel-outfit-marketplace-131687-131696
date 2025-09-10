@@ -10,6 +10,7 @@ Theme:
 What’s included:
 - Homepage with hero banner, pastel carousel, filter sidebar, and product grid.
 - Product detail pages with large imagery and gallery thumbnails.
+- Gallery page with grid of pastel looks, Lookbook page with large hero panels, About page with lifestyle content.
 - Cart quick-view and a simple checkout page.
 - Fully responsive layout and soft shadows/rounded design language.
 

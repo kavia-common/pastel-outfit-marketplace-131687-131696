@@ -66,9 +66,12 @@ export default function Home() {
                 Explore our curated selection of pastel outfits crafted with
                 breathable fabrics and timeless silhouettes.
               </p>
-              <div className="flex gap-2">
+              <div className="flex gap-2 flex-wrap">
                 <a href="#grid" className="btn btn-primary">Shop Now</a>
-                <a href="#carousel" className="btn btn-accent">See Lookbook</a>
+                <a href="#carousel" className="btn btn-accent">See Carousel</a>
+                <Link href="/lookbook" className="btn btn-secondary">Open Lookbook</Link>
+                <Link href="/gallery" className="btn btn-ghost">Open Gallery</Link>
+                <Link href="/about" className="btn btn-ghost">About Us</Link>
               </div>
             </div>
             <div className="round-soft overflow-hidden shadow-soft pastel-border">
