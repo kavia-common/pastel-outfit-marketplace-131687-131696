@@ -60,6 +60,9 @@ function Header() {
           <Link className="pill hover:opacity-80" href="/#tops">Tops</Link>
           <Link className="pill hover:opacity-80" href="/#bottoms">Bottoms</Link>
           <Link className="pill hover:opacity-80" href="/#accessories">Accessories</Link>
+          <Link className="pill hover:opacity-80" href="/spring">Spring</Link>
+          <Link className="pill hover:opacity-80" href="/summer">Summer</Link>
+          <Link className="pill hover:opacity-80" href="/cozy">Cozy</Link>
           <Link className="pill hover:opacity-80" href="/gallery">Gallery</Link>
           <Link className="pill hover:opacity-80" href="/lookbook">Lookbook</Link>
           <Link className="pill hover:opacity-80" href="/about">About</Link>

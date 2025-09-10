@@ -69,7 +69,10 @@ export default function Home() {
               <div className="flex gap-2 flex-wrap">
                 <a href="#grid" className="btn btn-primary">Shop Now</a>
                 <a href="#carousel" className="btn btn-accent">See Carousel</a>
-                <Link href="/lookbook" className="btn btn-secondary">Open Lookbook</Link>
+                <Link href="/spring" className="btn btn-secondary">Spring Pastels</Link>
+                <Link href="/summer" className="btn btn-secondary">Summer Breeze</Link>
+                <Link href="/cozy" className="btn btn-secondary">Cozy Neutrals</Link>
+                <Link href="/lookbook" className="btn btn-ghost">Open Lookbook</Link>
                 <Link href="/gallery" className="btn btn-ghost">Open Gallery</Link>
                 <Link href="/about" className="btn btn-ghost">About Us</Link>
               </div>
