@@ -14,6 +14,8 @@ export async function generateStaticParams() {
  * ProductDetailPage is a server component wrapper that passes the dynamic param to
  * the client component. This allows using generateStaticParams while keeping
  * interactive UI in a client component.
+ *
+ * Note: In this project configuration, Next.js generates PageProps where `params` is a Promise.
  */
 type PageProps = {
   params: Promise<{ id: string }>;
